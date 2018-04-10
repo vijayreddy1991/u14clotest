@@ -1,0 +1,19 @@
+jobs:
+  - name: clojuretest
+    type: runSh
+    steps:
+      - TASK:
+          runtime:
+            options:
+              imageName: "drydock/u14cloall"
+              imageTag: master
+          script:
+         
+            - echo "(print *clojure-version*)" > clojure.main   
+            - clj clojure.main
+            - java -jar /root/lib/clojure-1.8.0.jar clojure.main
+            - java -jar /root/lib/clojure-1.7.0.jar clojure.main
+            - java -jar /root/lib/clojure-1.6.0.jar clojure.main
+            - java -jar /root/lib/clojure-1.5.1.jar clojure.main
+            - java -jar /root/lib/clojure-1.4.0.jar clojure.main
+            - java -jar /root/lib/clojure-1.3.0.jar clojure.main
